@@ -1,4 +1,4 @@
-## Bienvenidos a UD5-PRO-Restaurantes, una práctica realizada única y exclusivamente por Alejandro Guzmán Pérez del curso 1ºDAM
+## Bienvenidos a UD5-PRO-Ranking-de-Restaurantes, una práctica realizada única y exclusivamente por Alejandro Guzmán Pérez del curso 1ºDAM
 
 **ENUNCIADO**
 
