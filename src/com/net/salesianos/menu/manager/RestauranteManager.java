@@ -1,7 +1,9 @@
-package com;
+package com.net.salesianos.menu.manager;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+
+import com.net.salesianos.menu.restaurante.Restaurante;
 
 public class RestauranteManager {
     private List<Restaurante> restaurantes;

@@ -1,5 +1,8 @@
-package com;
+package com.net.salesianos.menu;
 import javax.swing.*;
+
+import com.net.salesianos.menu.manager.RestauranteManager;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

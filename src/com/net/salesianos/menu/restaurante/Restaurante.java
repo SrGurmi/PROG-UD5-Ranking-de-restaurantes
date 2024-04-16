@@ -1,4 +1,4 @@
-package com;
+package com.net.salesianos.menu.restaurante;
 public class Restaurante {
     private String nombre;
     private String localizacion;
