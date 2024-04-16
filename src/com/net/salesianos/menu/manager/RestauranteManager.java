@@ -1,6 +1,9 @@
+package com.net.salesianos.menu.manager;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+
+import com.net.salesianos.menu.restaurante.Restaurante;
 
 public class RestauranteManager {
     private List<Restaurante> restaurantes;
@@ -12,7 +15,7 @@ public class RestauranteManager {
     public void agregarRestaurante(String nombre, String localizacion, String horario, int puntuacion) {
         Restaurante restaurante = new Restaurante(nombre, localizacion, horario, puntuacion);
         restaurantes.add(restaurante);
-        JOptionPane.showMessageDialog(null, "Restaurante agregado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Restaurante agregado correctamente.");
     }
 
     public void mostrarRestaurantes() {
@@ -24,7 +27,7 @@ public class RestauranteManager {
         JOptionPane.showMessageDialog(null, sb.toString(), "Restaurantes", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    public void editarRestaurante(int indice, String nombre, String localizacion, String horario, int puntuacion) {
+public void editarRestaurante(int indice, String nombre, String localizacion, String horario, int puntuacion) {
         if (indice >= 0 && indice < restaurantes.size()) {
             Restaurante restaurante = restaurantes.get(indice);
             restaurante.setNombre(nombre);
@@ -46,8 +49,12 @@ public class RestauranteManager {
         }
     }
 
-
     public List<Restaurante> getRestaurantes() {
         return restaurantes;
     }
+
+    public void agregarRestaurante(Restaurante restaurante) {
+        restaurantes.add(restaurante);
+        JOptionPane.showMessageDialog(null, "Restaurante agregado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+}
 }
