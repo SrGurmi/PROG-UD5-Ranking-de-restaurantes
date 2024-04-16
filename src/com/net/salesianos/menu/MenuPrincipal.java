@@ -2,6 +2,7 @@ package com.net.salesianos.menu;
 import javax.swing.*;
 
 import com.net.salesianos.menu.manager.RestauranteManager;
+import com.net.salesianos.menu.restaurante.Restaurante;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -73,22 +74,132 @@ public class MenuPrincipal {
     }
 
     private void mostrarFormularioAgregarRestaurante() {
-        // Implementa aquí la lógica para mostrar un formulario de agregar restaurante
-        // Puedes usar JOptionPane u otro componente Swing para recolectar la información
+        JTextField nombreField = new JTextField(20);
+        JTextField localizacionField = new JTextField(20);
+        JTextField horarioField = new JTextField(20);
+        JTextField puntuacionField = new JTextField(5);
+
+        JPanel myPanel = new JPanel();
+        myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.Y_AXIS));
+        myPanel.add(new JLabel("Nombre:"));
+        myPanel.add(nombreField);
+        myPanel.add(new JLabel("Localización:"));
+        myPanel.add(localizacionField);
+        myPanel.add(new JLabel("Horario:"));
+        myPanel.add(horarioField);
+        myPanel.add(new JLabel("Puntuación:"));
+        myPanel.add(puntuacionField);
+
+        int result = JOptionPane.showConfirmDialog(null, myPanel,
+                "Ingrese los datos del restaurante", JOptionPane.OK_CANCEL_OPTION);
+
+        if (result == JOptionPane.OK_OPTION) {
+            try {
+                String nombre = nombreField.getText();
+                String localizacion = localizacionField.getText();
+                String horario = horarioField.getText();
+                int puntuacion = Integer.parseInt(puntuacionField.getText());
+
+                Restaurante restaurante = new Restaurante(nombre, localizacion, horario, puntuacion);
+                restauranteManager.agregarRestaurante(restaurante);
+                JOptionPane.showMessageDialog(null, "Restaurante agregado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Error: La puntuación debe ser un número entero.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }
 
     private void mostrarFormularioEditarRestaurante() {
-        // Implementa aquí la lógica para mostrar un formulario de editar restaurante
-        // Puedes usar JOptionPane u otro componente Swing para recolectar la información
+        JComboBox<String> restaurantesCombo = new JComboBox<>();
+        for (Restaurante restaurante : restauranteManager.getRestaurantes()) {
+            restaurantesCombo.addItem(restaurante.getNombre());
+        }
+
+        JPanel myPanel = new JPanel();
+        myPanel.add(new JLabel("Seleccione restaurante a editar:"));
+        myPanel.add(restaurantesCombo);
+
+        int result = JOptionPane.showConfirmDialog(null, myPanel,
+                "Seleccione restaurante a editar", JOptionPane.OK_CANCEL_OPTION);
+
+        if (result == JOptionPane.OK_OPTION) {
+            int selectedIndex = restaurantesCombo.getSelectedIndex();
+            if (selectedIndex != -1) {
+                Restaurante restaurante = restauranteManager.getRestaurantes().get(selectedIndex);
+
+                JTextField nombreField = new JTextField(restaurante.getNombre(), 20);
+                JTextField localizacionField = new JTextField(restaurante.getLocalizacion(), 20);
+                JTextField horarioField = new JTextField(restaurante.getHorario(), 20);
+                JTextField puntuacionField = new JTextField(String.valueOf(restaurante.getPuntuacion()), 5);
+
+                JPanel editPanel = new JPanel();
+                editPanel.setLayout(new BoxLayout(editPanel, BoxLayout.Y_AXIS));
+                editPanel.add(new JLabel("Nombre:"));
+                editPanel.add(nombreField);
+                editPanel.add(new JLabel("Localización:"));
+                editPanel.add(localizacionField);
+                editPanel.add(new JLabel("Horario:"));
+                editPanel.add(horarioField);
+                editPanel.add(new JLabel("Puntuación:"));
+                editPanel.add(puntuacionField);
+
+                int editResult = JOptionPane.showConfirmDialog(null, editPanel,
+                        "Editar restaurante", JOptionPane.OK_CANCEL_OPTION);
+
+                if (editResult == JOptionPane.OK_OPTION) {
+                    try {
+                        String nombre = nombreField.getText();
+                        String localizacion = localizacionField.getText();
+                        String horario = horarioField.getText();
+                        int puntuacion = Integer.parseInt(puntuacionField.getText());
+
+                        restaurante.setNombre(nombre);
+                        restaurante.setLocalizacion(localizacion);
+                        restaurante.setHorario(horario);
+                        restaurante.setPuntuacion(puntuacion);
+
+                        JOptionPane.showMessageDialog(null, "Restaurante editado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    } catch (NumberFormatException ex) {
+                        JOptionPane.showMessageDialog(null, "Error: La puntuación debe ser un número entero.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un restaurante para editar.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }
 
     private void mostrarListaRestaurantes() {
-        restauranteManager.mostrarRestaurantes();
+        StringBuilder sb = new StringBuilder();
+        sb.append("Lista de Restaurantes:\n");
+        for (Restaurante restaurante : restauranteManager.getRestaurantes()) {
+            sb.append(restaurante.toString()).append("\n");
+        }
+        JOptionPane.showMessageDialog(null, sb.toString(), "Restaurantes", JOptionPane.INFORMATION_MESSAGE);
     }
 
     private void mostrarFormularioEliminarRestaurante() {
-        // Implementa aquí la lógica para mostrar un formulario de eliminar restaurante
-        // Puedes usar JOptionPane u otro componente Swing para recolectar la información
+        JComboBox<String> restaurantesCombo = new JComboBox<>();
+        for (Restaurante restaurante : restauranteManager.getRestaurantes()) {
+            restaurantesCombo.addItem(restaurante.getNombre());
+        }
+
+        JPanel myPanel = new JPanel();
+        myPanel.add(new JLabel("Seleccione restaurante a eliminar:"));
+        myPanel.add(restaurantesCombo);
+
+        int result = JOptionPane.showConfirmDialog(null, myPanel,
+                "Seleccione restaurante a eliminar", JOptionPane.OK_CANCEL_OPTION);
+
+        if (result == JOptionPane.OK_OPTION) {
+            int selectedIndex = restaurantesCombo.getSelectedIndex();
+            if (selectedIndex != -1) {
+                restauranteManager.getRestaurantes().remove(selectedIndex);
+                JOptionPane.showMessageDialog(null, "Restaurante eliminado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un restaurante para eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }
 
     public static void main(String[] args) {
@@ -97,5 +208,3 @@ public class MenuPrincipal {
         menu.mostrarMenu();
     }
 }
-
-

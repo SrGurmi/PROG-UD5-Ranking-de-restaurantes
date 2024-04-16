@@ -5,6 +5,7 @@ public class Restaurante {
     private String horario;
     private int puntuacion;
 
+    // Constructor
     public Restaurante(String nombre, String localizacion, String horario, int puntuacion) {
         this.nombre = nombre;
         this.localizacion = localizacion;
@@ -13,6 +14,7 @@ public class Restaurante {
     }
 
     // Getters y Setters
+
     public String getNombre() {
         return nombre;
     }
@@ -45,13 +47,14 @@ public class Restaurante {
         this.puntuacion = puntuacion;
     }
 
+    // Método toString para representación textual del objeto Restaurante
     @Override
     public String toString() {
         return "Restaurante{" +
-                "Nombre='" + nombre + '\'' +
-                ", Localizacion='" + localizacion + '\'' +
-                ", Horario='" + horario + '\'' +
-                ", Puntuacion=" + puntuacion +
+                "nombre='" + nombre + '\'' +
+                ", localizacion='" + localizacion + '\'' +
+                ", horario='" + horario + '\'' +
+                ", puntuacion=" + puntuacion +
                 '}';
     }
 }
