@@ -1,3 +1,4 @@
+package com;
 public class Restaurante {
     private String nombre;
     private String localizacion;
