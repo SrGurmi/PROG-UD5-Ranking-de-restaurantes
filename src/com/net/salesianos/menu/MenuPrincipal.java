@@ -22,11 +22,11 @@ public class MenuPrincipal {
 
         JPanel panel = new JPanel(new GridLayout(5, 1, 10, 10));
 
-        JButton agregarBtn = new JButton("Agregar Restaurante");
-        JButton editarBtn = new JButton("Editar Restaurante");
-        JButton mostrarBtn = new JButton("Mostrar Restaurantes");
-        JButton eliminarBtn = new JButton("Eliminar Restaurante");
-        JButton salirBtn = new JButton("Salir");
+        JButton agregarBtn = new JButton("1. Agregar Restaurante");
+        JButton editarBtn = new JButton("2. Editar Restaurante");
+        JButton mostrarBtn = new JButton("3. Mostrar Restaurantes");
+        JButton eliminarBtn = new JButton("4. Eliminar Restaurante");
+        JButton salirBtn = new JButton("Q. Salir");
 
         agregarBtn.addActionListener(new ActionListener() {
             @Override
