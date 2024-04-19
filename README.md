@@ -209,58 +209,47 @@ manera posible del salir del programa, debe ser a través de la opción del men�
 
 ## DOCUMENTACIÓN
 
-| | | | | | |
-|-|-|-|-|-|-|
-| Clase Restaurante-Manager| | | | | |
-| | | | | | |
-|El código define una clase `RestauranteManager` que gestiona una lista de restaurantes. Cada restaurante es una instancia de la clase `Restaurante`.| | | | | |
-| | | | | | |
-|La clase `RestauranteManager` tiene los siguientes métodos:| | | | | |
-| | | | | | |
-|- `agregarRestaurante(String nombre| String localizacion| String horario| int puntuacion)`: Crea un nuevo restaurante con los detalles proporcionados y lo agrega a la lista de restaurantes. Luego muestra un mensaje de éxito.| | |
-| | | | | | |
-|- `mostrarRestaurantes()`: Muestra una lista de todos los restaurantes.| | | | | |
-| | | | | | |
-|- `editarRestaurante(int indice| String nombre| String localizacion| String horario| int puntuacion)`: Edita los detalles de un restaurante existente en un índice específico. Si el índice es inválido| muestra un mensaje de error.|
-| | | | | | |
-|- `eliminarRestaurante(int indice)`: Elimina un restaurante en un índice específico. Si el índice es inválido| muestra un mensaje de error.| | | | |
-| | | | | | |
-|- `getRestaurantes()`: Devuelve la lista de restaurantes.| | | | | |
-| | | | | | |
-|- `agregarRestaurante(Restaurante restaurante)`: Agrega un restaurante ya existente a la lista de restaurantes y muestra un mensaje de éxito.| | | | | |
-| | | | | | |
-| | | | | | |
-| | | | | | |
-| | | | | | |
-| | | | | | |
-| | | | | | |
-| | | | | | |
-| | | | | | |
-| | | | | | |
-| | | | | | |
-|Clase Restaurante| | | | | |
-|Este código define una clase en Java llamada `Restaurante` en el paquete `com.net.salesianos.menu.restaurante`. Esta clase representa un restaurante con cuatro propiedades: `nombre`| `localizacion`| `horario` y `puntuacion`.| | | |
-| | | | | | |
-|La clase `Restaurante` tiene un constructor que acepta cuatro parámetros correspondientes a sus cuatro propiedades. La palabra clave `this` se utiliza para referirse a la instancia actual de la clase| distinguiendo los campos de la clase de los parámetros del constructor cuando tienen los mismos nombres.| | | | |
-| | | | | | |
-|La clase también incluye métodos getter y setter para cada una de sus propiedades. Estos métodos se utilizan para obtener (get) y modificar (set) los valores de las propiedades. Los métodos getter devuelven el valor actual de la propiedad correspondiente| mientras que los métodos setter toman un parámetro y asignan su valor a la propiedad correspondiente.| | | | |
-| | | | | | |
-|Finalmente| la clase sobrescribe el método `toString` heredado de la clase `Object`. Este método devuelve una representación en cadena del objeto `Restaurante`| que incluye los valores de todas sus propiedades. La anotación `@Override` sobre el método indica que este método tiene la intención de sobrescribir un método en una superclase.| | | |
-| | | | | | |
-|Clase MenuPrincipal| | | | | |
-| | | | | | |
-|Este código Java es para una aplicación GUI simple que administra una lista de restaurantes. Utiliza la biblioteca Swing para los componentes de la GUI. La aplicación permite al usuario agregar| editar| mostrar y eliminar restaurantes.| | | |
-| | | | | | |
-|La clase `MenuPrincipal` es la clase principal de la aplicación. Tiene un objeto `RestauranteManager` como miembro| que se utiliza para administrar la lista de restaurantes. El objeto `RestauranteManager` se pasa al constructor de `MenuPrincipal`.| | | | |
-| | | | | | |
-|El método `mostrarMenu` crea el menú principal de la aplicación. Crea un `JFrame` (la ventana principal) y un `JPanel` (un contenedor para otros componentes). También crea cinco objetos `JButton` para las diferentes operaciones (agregar| editar| mostrar| eliminar y salir)| y los agrega al panel. Cada botón tiene un `ActionListener` adjunto| que define qué sucede cuando se hace clic en el botón.|
-| | | | | | |
-|El método `mostrarFormularioAgregarRestaurante` se llama cuando se hace clic en el botón "Agregar Restaurante". Muestra un diálogo con campos para el nombre| la ubicación| el horario y la calificación del restaurante. Si el usuario hace clic en "OK"| crea un nuevo objeto `Restaurante` con los datos ingresados y lo agrega a la lista.| | |
-| | | | | | |
-|El método `mostrarFormularioEditarRestaurante` es similar| pero primero pide al usuario que seleccione un restaurante de una lista desplegable. Luego| rellena previamente los campos con los datos del restaurante seleccionado. Si el usuario hace clic en "OK"| actualiza los datos del restaurante seleccionado.| | |
-| | | | | | |
-|El método `mostrarListaRestaurantes` se llama cuando se hace clic en el botón "Mostrar Restaurantes". Crea una cadena con los datos de todos los restaurantes y la muestra en un diálogo.| | | | | |
-| | | | | | |
-|El método `mostrarFormularioEliminarRestaurante` se llama cuando se hace clic en el botón "Eliminar Restaurante". Pide al usuario que seleccione un restaurante de una lista desplegable. Si el usuario hace clic en "OK"| elimina el restaurante seleccionado de la lista.| | | | |
-| | | | | | |
-|El método `main` crea un objeto `RestauranteManager`| un objeto `MenuPrincipal` y llama al método `mostrarMenu` para iniciar la aplicación.| | | | |
+### Clase Restaurante-Manager
+
+El código define una clase `RestauranteManager` que gestiona una lista de restaurantes. Cada restaurante es una instancia de la clase `Restaurante`.
+
+La clase `RestauranteManager` tiene los siguientes métodos:
+
+| Método | Descripción |
+|--------|-------------|
+| `agregarRestaurante(String nombre, String localizacion, String horario, int puntuacion)` | Crea un nuevo restaurante con los detalles proporcionados y lo agrega a la lista de restaurantes. Luego muestra un mensaje de éxito. |
+| `mostrarRestaurantes()` | Muestra una lista de todos los restaurantes. |
+| `editarRestaurante(int indice, String nombre, String localizacion, String horario, int puntuacion)` | Edita los detalles de un restaurante existente en un índice específico. Si el índice es inválido, muestra un mensaje de error. |
+| `eliminarRestaurante(int indice)` | Elimina un restaurante en un índice específico. Si el índice es inválido, muestra un mensaje de error. |
+| `getRestaurantes()` | Devuelve la lista de restaurantes. |
+| `agregarRestaurante(Restaurante restaurante)` | Agrega un restaurante ya existente a la lista de restaurantes y muestra un mensaje de éxito. |
+
+### Clase Restaurante
+
+Este código define una clase en Java llamada `Restaurante` en el paquete `com.net.salesianos.menu.restaurante`. Esta clase representa un restaurante con cuatro propiedades: `nombre`, `localizacion`, `horario` y `puntuacion`.
+
+La clase `Restaurante` tiene un constructor que acepta cuatro parámetros correspondientes a sus cuatro propiedades. La palabra clave `this` se utiliza para referirse a la instancia actual de la clase, distinguiendo los campos de la clase de los parámetros del constructor cuando tienen los mismos nombres.
+
+La clase también incluye métodos getter y setter para cada una de sus propiedades. Estos métodos se utilizan para obtener (get) y modificar (set) los valores de las propiedades. Los métodos getter devuelven el valor actual de la propiedad correspondiente, mientras que los métodos setter toman un parámetro y asignan su valor a la propiedad correspondiente.
+
+Finalmente, la clase sobrescribe el método `toString` heredado de la clase `Object`. Este método devuelve una representación en cadena del objeto `Restaurante`, que incluye los valores de todas sus propiedades. La anotación `@Override` sobre el método indica que este método tiene la intención de sobrescribir un método en una superclase.
+
+### Clase MenuPrincipal
+
+Este código Java es para una aplicación GUI simple que administra una lista de restaurantes. Utiliza la biblioteca Swing para los componentes de la GUI. La aplicación permite al usuario agregar, editar, mostrar y eliminar restaurantes.
+
+La clase `MenuPrincipal` es la clase principal de la aplicación. Tiene un objeto `RestauranteManager` como miembro, que se utiliza para administrar la lista de restaurantes. El objeto `RestauranteManager` se pasa al constructor de `MenuPrincipal`.
+
+#### Funciones de `MenuPrincipal`:
+
+- `mostrarMenu`: Crea el menú principal de la aplicación. Crea un `JFrame` (la ventana principal) y un `JPanel` (un contenedor para otros componentes). También crea cinco objetos `JButton` para las diferentes operaciones (agregar, editar, mostrar, eliminar y salir) y los agrega al panel. Cada botón tiene un `ActionListener` adjunto, que define qué sucede cuando se hace clic en el botón.
+
+- `mostrarFormularioAgregarRestaurante`: Muestra un diálogo con campos para el nombre, la ubicación, el horario y la calificación del restaurante. Si el usuario hace clic en "OK", crea un nuevo objeto `Restaurante` con los datos ingresados y lo agrega a la lista.
+
+- `mostrarFormularioEditarRestaurante`: Pide al usuario que seleccione un restaurante de una lista desplegable. Luego, rellena previamente los campos con los datos del restaurante seleccionado. Si el usuario hace clic en "OK", actualiza los datos del restaurante seleccionado.
+
+- `mostrarListaRestaurantes`: Crea una cadena con los datos de todos los restaurantes y la muestra en un diálogo.
+
+- `mostrarFormularioEliminarRestaurante`: Pide al usuario que seleccione un restaurante de una lista desplegable. Si el usuario hace clic en "OK", elimina el restaurante seleccionado de la lista.
+
+El método `main` crea un objeto `RestauranteManager`, un objeto `MenuPrincipal`, y llama al método `mostrarMenu` para iniciar la aplicación.
